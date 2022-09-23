@@ -12,13 +12,13 @@ public class Program {
         String paymentMethod = myObj.nextLine();
         try {
             PaymentEnum pm = PaymentEnum.valueOf(paymentMethod);
-            if(pm.equals(PaymentEnum.blik) || pm.equals((PaymentEnum.card) ) ) {
+            if (pm == PaymentEnum.card || pm == PaymentEnum.blik) {
                 System.out.println("*blik or card situation*");
-                if(randomsituation(1)) {
+                if (randomsituation(1)) {
                     System.out.println("terminal is on");
-                    if(randomsituation(1)) {
+                    if (randomsituation(1)) {
                         System.out.println("terminal has internet connection");
-                        if(pm.equals(PaymentEnum.blik)) {
+                        if (pm == PaymentEnum.blik) {
                             //blikPayment();
                         } else {
                             //cardPayment();
@@ -29,12 +29,15 @@ public class Program {
                 } else {
                     System.out.println("terminal is off");
                 }
-            } else if (pm.equals(PaymentEnum.cash)) {
+            } else if (pm == PaymentEnum.cash) {
                 cashPayment();
 
             }
         } catch (Exception e) {
-            System.err.println("No such payment"); //TUTAJ NIE WIEDZIALEM CZY MAM DAC KONIEC PROGRAMU CZY DAC POPORSTU ELSE Z program()
+            System.err.println("No such payment");
+            program();
+        }
+
         }
     }
-}
+
