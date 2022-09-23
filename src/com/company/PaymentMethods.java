@@ -2,9 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
+import static com.company.Program.program;
 import static com.company.RandomSituations.randomsituation;
+import static com.company.ArrayInput.arrayInput;
+import static com.company.Main.main;
 
 public class PaymentMethods {
+    static int trials = 0;
     static float price = 100;
     static int kodBlik = 1234;
 
@@ -12,15 +16,19 @@ public class PaymentMethods {
     static void cashPayment() {
             try {
                 Scanner s = new Scanner(System.in);
-                System.out.println("Enter cash");
-                float cashValue = s.nextFloat();
-                if (cashValue > price) {
+                if (arrayInput() > price) {
                     System.out.println("receipt " + price);
                 } else {
                     System.out.println("U dont have enought cash");
+                    trials++;
+                    if (trials == 3) {
+                        System.out.println("Sorry try again later");
+                    } else {
+                        program();
+                    }
                 }
             } catch (Exception e) {
-                System.out.println("ErrorCash");
+                System.out.println("Error Cash");
             }
         }
 
