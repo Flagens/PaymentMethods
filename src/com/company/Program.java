@@ -34,7 +34,7 @@ public class Program {
 
             }
         } catch (Exception e) {
-            System.err.println("No such payment");
+            System.err.println("No such payment"); //TUTAJ NIE WIEDZIALEM CZY MAM DAC KONIEC PROGRAMU CZY DAC POPORSTU ELSE Z program()
         }
     }
 }
