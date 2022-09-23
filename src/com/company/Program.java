@@ -19,9 +19,9 @@ public class Program {
                     if(randomsituation(1)) {
                         System.out.println("terminal has internet connection");
                         if(pm.equals(PaymentEnum.blik)) {
-                            blikPayment();
+                            //blikPayment();
                         } else {
-                            cardPayment();
+                            //cardPayment();
                         }
                     } else {
                         System.out.println("terminal has no internet connection");

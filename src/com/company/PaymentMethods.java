@@ -2,10 +2,12 @@ package com.company;
 
 import java.util.Scanner;
 
+
+import static com.company.ArrayInput.getSum;
 import static com.company.Program.program;
 import static com.company.RandomSituations.randomsituation;
 import static com.company.ArrayInput.arrayInput;
-import static com.company.Main.main;
+
 
 public class PaymentMethods {
     static int trials = 0;
@@ -13,22 +15,39 @@ public class PaymentMethods {
     static int kodBlik = 1234;
 
     static int moneyBlik = 150;
+
+
     static void cashPayment() {
             try {
                 Scanner s = new Scanner(System.in);
                 if (arrayInput() > price) {
-                    System.out.println("receipt " + price);
+                    float a = getSum() - price;
+                    String formattedString = String.format("%.02f", a);
+                    System.out.println( formattedString + " your restidue");
                 } else {
                     System.out.println("U dont have enought cash");
-                    trials++;
-                    if (trials == 3) {
-                        System.out.println("Sorry try again later");
-                    } else {
-                        program();
+                    System.out.println("1 if u want to end transaction, 2 if u want to insert diffrent banknotes 3 if u want to try diffrent payment");
+                    int contnueVariable = s.nextInt();
+                    if (contnueVariable == 3) {
+                        trials++;
+                        if (trials == 3) {
+                            System.out.println("Sorry try again later");
+                        } else {
+                            program();
+                        }
+                    } else if (contnueVariable == 2) {
+                        trials++;
+                        if ( trials == 3) {
+                            System.out.println("Sorry try again later");
+                        } else {
+                            cashPayment();
+                        }
+                    } else if (contnueVariable == 1) {
+                        System.out.println("Good bye");
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Error Cash");
+                System.out.println("Something went wrong, proably u didnt enter int/float");
             }
         }
 
